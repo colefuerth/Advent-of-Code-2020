@@ -1,0 +1,13 @@
+X:\AdventOfCode\day15-2\day15-2\bin\Debug\netcoreapp3.1\day15-2.exe
+X:\AdventOfCode\day15-2\day15-2\bin\Debug\netcoreapp3.1\day15-2.deps.json
+X:\AdventOfCode\day15-2\day15-2\bin\Debug\netcoreapp3.1\day15-2.runtimeconfig.json
+X:\AdventOfCode\day15-2\day15-2\bin\Debug\netcoreapp3.1\day15-2.runtimeconfig.dev.json
+X:\AdventOfCode\day15-2\day15-2\bin\Debug\netcoreapp3.1\day15-2.dll
+X:\AdventOfCode\day15-2\day15-2\bin\Debug\netcoreapp3.1\day15-2.pdb
+X:\AdventOfCode\day15-2\day15-2\obj\Debug\netcoreapp3.1\day15-2.csprojAssemblyReference.cache
+X:\AdventOfCode\day15-2\day15-2\obj\Debug\netcoreapp3.1\day15-2.AssemblyInfoInputs.cache
+X:\AdventOfCode\day15-2\day15-2\obj\Debug\netcoreapp3.1\day15-2.AssemblyInfo.cs
+X:\AdventOfCode\day15-2\day15-2\obj\Debug\netcoreapp3.1\day15-2.csproj.CoreCompileInputs.cache
+X:\AdventOfCode\day15-2\day15-2\obj\Debug\netcoreapp3.1\day15-2.dll
+X:\AdventOfCode\day15-2\day15-2\obj\Debug\netcoreapp3.1\day15-2.pdb
+X:\AdventOfCode\day15-2\day15-2\obj\Debug\netcoreapp3.1\day15-2.genruntimeconfig.cache
