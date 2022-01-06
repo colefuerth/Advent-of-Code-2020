@@ -1,4 +1,4 @@
-import sys
+from sys import argv
 from itertools import product, count, permutations
 from copy import deepcopy
 
@@ -12,7 +12,7 @@ def part2(f:list) -> int:
 
 def main():
     # start by getting file as a list of strings
-    f = [l.strip() for l in open(sys.argv[1], 'r')]
+    f = [l.strip() for l in open(argv[1], 'r')]
 
     print("Part 1:", part1(deepcopy(f)))
     print("Part 2:", part2(deepcopy(f)))

@@ -1,6 +1,7 @@
 import sys
 from itertools import groupby
 from numpy import prod
+from collections import defaultdict
 
 # returns a dict of invalid nearby tickets and a list of their invalid fields
 def findinvalid(valid, nearbytickets):
@@ -21,24 +22,30 @@ def part1(valid, myticket, nearbytickets):
 
 def part2(valid, myticket, nearbytickets):
     # first, remove any invalid tickets from nearbytickets
-    nearbytickets = [t for t in nearbytickets if t not in findinvalid(valid, nearbytickets).keys()]
+    invalid = findinvalid(valid, nearbytickets)
+    nearbytickets = [t for t in nearbytickets if t not in invalid.keys()]
+    nearbytickets.append(myticket)
 
     # entries are dicts of field:position
     positions = {}
-    positionlists = [list(col) for col in zip(*nearbytickets)]
-    for k, v in valid.items():
-        # find a position where all tickets are valid for that position
-        # for each key, find a position where all tickets are valid for that position
-        for i, col in enumerate(positionlists):
-            if i in positions.values(): # skip checking positions already taken
+    positionlists = list(zip(*nearbytickets))
+    while len(positions) < len(valid):
+        possibilities = defaultdict(list)
+        for k, v in valid.items():
+            if k in positions:
                 continue
-            if all(any(x in ran for ran in v) for x in col):
-                positions[k] = i
-                break
+            # find a position where all tickets are valid for that position
+            # for each key, find a position where all tickets are valid for that position
+            for i, col in enumerate(positionlists):
+                if i in positions.values(): # skip checking positions already taken
+                    continue
+                if all(any(x in ran for ran in v) for x in col):
+                    possibilities[k].append(i)
+        positions.update({k:v[0] for k, v in possibilities.items() if len(v) == 1})
     
     # now, use the position map to multiply the six fields on my ticket that start with the word 'departure' together
-
-    return 0
+    # print(positions)
+    return prod([myticket[positions[k]] for k in positions if k.startswith('departure')])
 
 def main():
     # start by getting file as a list of strings
@@ -62,7 +69,7 @@ def main():
     # print(nearbytickets)
 
     print(part1(valid, myticket, nearbytickets))      
-    # print(part2(f))  
+    print(part2(valid, myticket, nearbytickets))  
 
 if __name__ == "__main__":
     main()
