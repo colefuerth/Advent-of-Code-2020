@@ -12,8 +12,8 @@ def part2(f:list) -> int:
     return 0
 
 def main():
-    # start by getting file as a list of strings
-    f = [l.strip() for l in open(argv[1], 'r')]
+    inpfile = argv[1] if len(argv) > 1 else "input.txt"
+    f = [l.strip() for l in open(inpfile, "r")]
 
     print("Part 1:", part1(deepcopy(f)))
     print("Part 2:", part2(deepcopy(f)))
