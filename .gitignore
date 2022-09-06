@@ -7,3 +7,4 @@ makefile
 example*
 2020
 .vscode
+output.txt
