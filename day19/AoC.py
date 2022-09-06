@@ -4,15 +4,22 @@ from copy import deepcopy
 import re
 
 
-def check_rule(rule, string):
-    t, r = rule
-    if t == "rule":
-        return string == r
-    elif t == "branch":
-        for branch in r:
-            if check_branch(branch, string):
-                return True
-        return False
+def check_rule(rule: int, rules: list, string: str):
+    if string == '':
+        raise ValueError('String is empty')
+    rule = rules[rule]
+    if type(rule) == str:
+        return string[1:] if string.startswith(rule) else string
+    for branch in rule:
+        s = string
+        for leaf in branch:
+            st = check_rule(leaf, rules, s)
+            if st == s:
+                break
+            s = st
+        if s == '':
+            return s
+    return string
 
 
 def part1(f: list) -> int:
@@ -21,7 +28,7 @@ def part1(f: list) -> int:
     for i, line in enumerate(f):
         if not line:
             unparsed = f[:i]
-            strings = f[i + 1 :]
+            strings = f[i + 1:]
     rules = []
     for i, line in enumerate(unparsed):
         branch = re.findall(r"(\d[ \d]*)(?!:)", line)
@@ -35,7 +42,12 @@ def part1(f: list) -> int:
 
     print(rules)
 
-    return check_rule(rules[0], strings[0])
+    results = []
+    for s in strings:
+        r = check_rule(0, rules, s)
+        print(s, r)
+        results.append(r == '')
+    return sum(results)
 
 
 def part2(f: list) -> int:
