@@ -1,6 +1,7 @@
 from sys import argv
 from itertools import product, count, permutations
 from copy import deepcopy
+import re
 
 # AoC template for python3
 
